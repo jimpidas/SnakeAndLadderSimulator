@@ -13,8 +13,10 @@ namespace SnakeAndLadderSimulator
             static void Main(string[] args)
             {
                 int PositionOfPlayer = 0;
+                int dieRollCount = 0;
                 while (PositionOfPlayer < 100)
                 {
+                    dieRollCount++;
                     Random random = new Random();
                     int dice = random.Next(1, 7);
                     int option = random.Next(0, 3);
@@ -41,12 +43,14 @@ namespace SnakeAndLadderSimulator
                         PositionOfPlayer -= dice;
                         Console.WriteLine("Cannot move ...please roll again");
                     }
-                    Console.WriteLine("The player rolled a die " + dice + ",and now at a position : " + PositionOfPlayer);
+                    Console.WriteLine("The player rolled a die " + dice + ",and now at  position : " + PositionOfPlayer);
                 }
+                Console.WriteLine("The total no of time die was rolled to win is :" + dieRollCount);
             }
         }
     }
 }
+
 
 
 
