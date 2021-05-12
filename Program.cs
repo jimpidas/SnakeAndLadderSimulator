@@ -1,22 +1,38 @@
-﻿
-using System;
+﻿using System;
 
 namespace SnakeAndLadderSimulator
 {
     class Program
     {
-        public const int player = 0;
-        static void Main(string[] args)
+        public class SnakeAndLadder
         {
-            int PositionOfPlayer = 0;
-            Random random = new Random();
-            int dice = random.Next(1, 7);
+            public const int IsLadder = 1;
+            public const int IsSnake = 2;
 
 
-            Console.WriteLine("The player is at position " + PositionOfPlayer + ",and rolled a die : " + dice);
+            static void Main(string[] args)
+            {
+                int PositionOfPlayer = 0;
+                Random random = new Random();
+                int dice = random.Next(1, 7);
+                int option = random.Next(0, 3);
+                switch (option)
+                {
+                    case IsLadder:
+                        PositionOfPlayer += dice;
+                        break;
+
+                    case IsSnake:
+                        PositionOfPlayer -= dice;
+                        if (PositionOfPlayer < 0)
+                            PositionOfPlayer = 0;
+                        break;
+
+                    default: break;
+                }
+                Console.WriteLine("The player rolled a die  " + dice + ",and now at position : " + PositionOfPlayer);
+            }
 
         }
     }
 }
-
-
