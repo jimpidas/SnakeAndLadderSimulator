@@ -6,10 +6,10 @@ namespace SnakeAndLadderSimulator
     {
         public class SnakeAndLadder
         {
-            public const int IsLadder = 1;
-            public const int IsSnake = 2;
-            public const int IsPlayer1 = 0;
-            public const int IsPlayer2 = 0;
+            public const int ISLadder = 1;
+            public const int ISSnake = 2;
+            public const int ISPlayer1 = 0;
+            public const int ISPlayer2 = 0;
 
 
             static void Main(string[] args)
@@ -26,28 +26,28 @@ namespace SnakeAndLadderSimulator
                     int option = random.Next(0, 3);
                     switch (option)
                     {
-                        case IsLadder:
+                        case ISLadder:
                             Console.WriteLine("Yeah! its a ladder,please step up");
-                            if (player == IsPlayer1)
+                            if (player == ISPlayer1)
                                 PositionOfPlayer1 += dice;
                             else
                                 PositionOfPlayer1 += dice;
                             break;
 
-                        case IsSnake:
+                        case ISSnake:
                             Console.WriteLine("Opss! its a snake,you are going down");
 
-                            if (player == IsPlayer2)
-                            {
-                                PositionOfPlayer1 -= dice;
-                                if (PositionOfPlayer1 < 0)
-                                    PositionOfPlayer1 = 0;
-                            }
-                            else
+                            if (player == ISPlayer2)
                             {
                                 PositionOfPlayer2 -= dice;
                                 if (PositionOfPlayer2 < 0)
                                     PositionOfPlayer2 = 0;
+                            }
+                            else
+                            {
+                                PositionOfPlayer1 -= dice;
+                                if (PositionOfPlayer1 < 0)
+                                    PositionOfPlayer1 = 0;
                             }
                             break;
 
@@ -59,22 +59,22 @@ namespace SnakeAndLadderSimulator
                     {
 
                         Console.WriteLine("Cannot move ...please roll again");
-                        if (player == IsPlayer1)
+                        if (player == ISPlayer1)
                             PositionOfPlayer1 -= dice;
                         else
                             PositionOfPlayer2 -= dice;
 
 
                     }
-                    Console.WriteLine("The player 1 rolled a die " + dice + ",and now at position : " + PositionOfPlayer1 + "and the option is: " + option);
-                    Console.WriteLine("The player 2 rolled a die " + dice + ",and now at position : " + PositionOfPlayer2 + "and the option is: " + option);
+                    Console.WriteLine("The player 1 rolled a die " + dice + ",and now at position : \t" + PositionOfPlayer1 + "and the option is: " + option);
+                    Console.WriteLine("The player 2 rolled a die " + dice + ",and now at position : \t" + PositionOfPlayer2 + "and the option is: " + option);
 
 
-                    if (option == IsLadder)
+                    if (option == ISLadder)
                     {
                         Console.WriteLine("Congrats! its an ladder, you got one more Chance to roll the die");
                     }
-                    else if (player == IsPlayer1)
+                    else if (player == ISPlayer1)
                     {
                         Console.WriteLine("Second Player turn");
                         player = 1;
