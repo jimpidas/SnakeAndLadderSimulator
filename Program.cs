@@ -8,13 +8,13 @@ namespace SnakeAndLadderSimulator
         {
             public const int ISLadder = 1;
             public const int ISSnake = 2;
-            public const int ISPlayer1 = 0;
-            public const int ISPlayer2 = 0;
+            public const int ISPlayer1 = 1;
+            public const int ISPlayer2 = 2;
 
 
             static void Main(string[] args)
             {
-                int player = 0;
+                int player = 1;
                 int PositionOfPlayer1 = 0;
                 int PositionOfPlayer2 = 0;
                 int dieRollCount = 0;
@@ -27,15 +27,17 @@ namespace SnakeAndLadderSimulator
                     switch (option)
                     {
                         case ISLadder:
-                            Console.WriteLine("Yeah! its a ladder,please step up");
+                            Console.WriteLine($"The player {player} rolled a die " + dice);
+                            Console.WriteLine($"Yeah! Player{player}, its a ladder,you are moving ahead");
                             if (player == ISPlayer1)
                                 PositionOfPlayer1 += dice;
                             else
-                                PositionOfPlayer1 += dice;
+                                PositionOfPlayer2 += dice;
                             break;
 
                         case ISSnake:
-                            Console.WriteLine("Opss! its a snake,you are going down");
+                            Console.WriteLine($"The player {player} rolled a die " + dice);
+                            Console.WriteLine($"Opss! Player{player}, its a snake,you are going down");
 
                             if (player == ISPlayer2)
                             {
@@ -52,13 +54,13 @@ namespace SnakeAndLadderSimulator
                             break;
 
                         default:
-                            Console.WriteLine("You cannot move");
+                            Console.WriteLine($"Player {player},You cannot move");
                             break;
                     }
                     if (PositionOfPlayer1 > 100 || PositionOfPlayer2 > 100)
                     {
 
-                        Console.WriteLine("Cannot move ...please roll again");
+                        Console.WriteLine($"Player {player}Cannot move ...rolling again");
                         if (player == ISPlayer1)
                             PositionOfPlayer1 -= dice;
                         else
@@ -66,23 +68,23 @@ namespace SnakeAndLadderSimulator
 
 
                     }
-                    Console.WriteLine("The player 1 rolled a die " + dice + ",and now at position : \t" + PositionOfPlayer1 + "and the option is: " + option);
-                    Console.WriteLine("The player 2 rolled a die " + dice + ",and now at position : \t" + PositionOfPlayer2 + "and the option is: " + option);
+                    Console.WriteLine("---------------------------------------------------player 1 is at position : \t" + PositionOfPlayer1 );
+                    Console.WriteLine("---------------------------------------------------player 2 is at position : \t" + PositionOfPlayer2 );
 
 
                     if (option == ISLadder)
                     {
-                        Console.WriteLine("Congrats! its an ladder, you got one more Chance to roll the die");
+                        Console.WriteLine($"Congrats! its an ladder, Player{player}, got one more Chance to roll the die");
                     }
                     else if (player == ISPlayer1)
                     {
                         Console.WriteLine("Second Player turn");
-                        player = 1;
+                        player = 2;
                     }
                     else
                     {
                         Console.WriteLine("First Player Turn");
-                        player = 0;
+                        player = 1;
                     }
                 }
                 Console.WriteLine("The total no of time die was rolled to win is :" + dieRollCount);
@@ -98,10 +100,3 @@ namespace SnakeAndLadderSimulator
         }
     }
 }
-
-
-
-
-
-
-
